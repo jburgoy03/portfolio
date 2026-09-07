@@ -3,27 +3,317 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dean Burgoyne</title>
+<title>Jared Dean Burgoyne</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="description" content="Jared Dean Burgoyne — software engineer in Cincinnati, building backend systems and the interfaces on top of them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root { color-scheme: dark; }
-  body {
-    margin: 0; min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    background: #0d1117; color: #e6edf3;
-    font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, sans-serif;
-    text-align: center; padding: 2rem;
+  :root {
+    --ink:        #171B26;
+    --ink-raised: #1E2431;
+    --rule:       #2B3243;
+    --paper:      #E8E4DC;
+    --muted:      #8E93A3;
+    --signal:     #D8A657;
+
+    --serif: "Newsreader", Georgia, serif;
+    --sans:  "Archivo", ui-sans-serif, system-ui, sans-serif;
+
+    color-scheme: dark;
   }
-  h1 { font-size: clamp(2rem, 6vw, 3rem); margin: 0 0 .5rem; letter-spacing: -.02em; }
-  p { color: #8b949e; margin: 0; }
-  .tag { display:inline-block; margin-top:2rem; padding:.35rem .8rem;
-         border:1px solid #30363d; border-radius:999px; font-size:.8rem; color:#8b949e; }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: 3.5rem 1.75rem 6rem;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: border-color .15s ease, color .15s ease;
+  }
+  a:hover { border-color: var(--signal); color: var(--signal); }
+  a:focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* ---------- masthead ---------- */
+
+  .mast {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 5rem;
+  }
+  .monogram {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    letter-spacing: .06em;
+    color: var(--muted);
+    border: 0;
+  }
+  .place {
+    font-size: .85rem;
+    color: var(--muted);
+  }
+
+  /* ---------- hero ---------- */
+
+  .name {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.6rem, 8vw, 4.25rem);
+    line-height: 1.04;
+    letter-spacing: -.015em;
+    margin: 0 0 1.5rem;
+  }
+  .lede {
+    font-size: 1.15rem;
+    max-width: 34rem;
+    margin: 0 0 .75rem;
+  }
+  .sub {
+    color: var(--muted);
+    max-width: 34rem;
+    margin: 0;
+  }
+
+  /* ---------- waveform rule ---------- */
+
+  .wave {
+    display: block;
+    width: 100%;
+    height: 34px;
+    margin: 3.5rem 0;
+    overflow: visible;
+  }
+  .wave rect {
+    fill: var(--rule);
+    transform-origin: center;
+  }
+  .wave rect.lit { fill: var(--signal); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .wave rect { animation: rise .5s cubic-bezier(.2,.8,.2,1) backwards; }
+  }
+  @keyframes rise {
+    from { transform: scaleY(.06); opacity: 0; }
+    to   { transform: scaleY(1);   opacity: 1; }
+  }
+
+  /* ---------- sections ---------- */
+
+  section { margin-bottom: 3.25rem; }
+
+  h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.35rem;
+    margin: 0 0 1.1rem;
+    color: var(--paper);
+  }
+
+  .now { max-width: 36rem; margin: 0; }
+
+  /* ---------- project entries ---------- */
+
+  .entry {
+    padding: 1.6rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .entry-lead {
+    background: var(--ink-raised);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 1.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .entry-lead + .entry { border-top: 0; }
+
+  .entry-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: .5rem 1rem;
+    margin-bottom: .5rem;
+  }
+  .entry-title {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0;
+  }
+  .status {
+    font-size: .8rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .status.live { color: var(--signal); }
+
+  .entry p { margin: 0 0 .75rem; max-width: 36rem; }
+  .entry-lead p { margin: 0 0 1rem; }
+
+  .stack {
+    font-size: .85rem;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: .9rem 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: .9rem;
+  }
+
+  /* ---------- footer ---------- */
+
+  footer {
+    margin-top: 4.5rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: .75rem 1.5rem;
+    font-size: .9rem;
+    color: var(--muted);
+  }
+  footer ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (max-width: 34rem) {
+    .wrap { padding-top: 2.5rem; }
+    .mast { margin-bottom: 3.5rem; }
+    .entry-lead { padding: 1.25rem; }
+  }
 </style>
 </head>
 <body>
-  <main>
-    <h1>Dean Burgoyne</h1>
-    <p>Software engineer. Portfolio in progress.</p>
-    <span class="tag">deanburgoyne.dev</span>
-  </main>
+<div class="wrap">
+
+  <header class="mast">
+    <a class="monogram" href="/">JDB</a>
+    <span class="place">Cincinnati, Ohio</span>
+  </header>
+
+  <h1 class="name">Jared Dean<br>Burgoyne</h1>
+  <p class="lede">I build backend systems and the interfaces that sit on top of them.</p>
+  <p class="sub">Software engineer working in .NET and TypeScript, mostly on warehouse
+     fulfillment software. Off the clock I run a home server and build things that
+     run on it.</p>
+
+  <svg class="wave" viewBox="0 0 720 34" preserveAspectRatio="none" aria-hidden="true"></svg>
+
+  <section>
+    <h2>Now</h2>
+    <p class="now">Writing an audiobook server from scratch — a .NET API that scans a
+       library, pulls chapter data out of the files, and streams it to a web player
+       and an Android app that keep their positions in sync.</p>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+
+    <article class="entry-lead">
+      <div class="entry-head">
+        <h3 class="entry-title">Audiobook server and player</h3>
+        <span class="status">In progress</span>
+      </div>
+      <p>A self-hosted audiobook library. The server indexes a directory of m4b and
+         mp3 files, extracts chapters and cover art, and serves them over range
+         requests so seeking works properly. Clients report playback position back
+         to the API, which resolves conflicts when you switch devices mid-book.</p>
+      <p class="stack">.NET 8, PostgreSQL, React, Kotlin, Docker</p>
+      <ul class="links">
+        <li><a href="https://github.com/jburgoy03/audiobook-server">Source</a></li>
+      </ul>
+    </article>
+
+    <article class="entry">
+      <div class="entry-head">
+        <h3 class="entry-title">Home media server</h3>
+        <span class="status live">Running</span>
+      </div>
+      <p>A headless Ubuntu box running Jellyfin in Docker, with hardware-accelerated
+         transcoding and a few terabytes of storage behind it.</p>
+      <p class="stack">Ubuntu, Docker, Jellyfin</p>
+    </article>
+  </section>
+
+  <footer>
+    <span>deanburgoyne.dev</span>
+    <ul>
+      <li><a href="https://github.com/jburgoy03">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/jared-burgoyne-a4751717a/">LinkedIn</a></li>
+      <li><a href="mailto:YOUR-ADDRESS@example.com">Email</a></li>
+    </ul>
+  </footer>
+
+</div>
+
+<script>
+  // Static waveform rule. Fixed seed so the shape is the same on every load.
+  (function () {
+    var svg = document.querySelector('.wave');
+    if (!svg) return;
+
+    var NS = 'http://www.w3.org/2000/svg';
+    var bars = 96, gap = 7.5, w = 3, mid = 17, seed = 20260907;
+
+    function rand() {
+      seed = (seed * 1103515245 + 12345) % 2147483648;
+      return seed / 2147483648;
+    }
+
+    for (var i = 0; i < bars; i++) {
+      // Envelope keeps the ends quiet so the rule reads as a line, not a block.
+      var env = Math.sin((i / (bars - 1)) * Math.PI);
+      var h = Math.max(2, (3 + rand() * 26) * (0.35 + env * 0.65));
+      var r = document.createElementNS(NS, 'rect');
+      r.setAttribute('x', (i * gap).toFixed(2));
+      r.setAttribute('y', (mid - h / 2).toFixed(2));
+      r.setAttribute('width', w);
+      r.setAttribute('height', h.toFixed(2));
+      r.setAttribute('rx', '1.5');
+      if (rand() > 0.88) r.setAttribute('class', 'lit');
+      r.style.animationDelay = (i * 9) + 'ms';
+      svg.appendChild(r);
+    }
+  })();
+</script>
 </body>
 </html>
