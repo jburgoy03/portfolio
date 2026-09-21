@@ -195,6 +195,14 @@
     font-size: .9rem;
   }
 
+    .links a {
+    color: var(--signal);
+    font-weight: 500;
+    border-bottom-color: rgba(216, 166, 87, .35);
+  }
+  .links a:hover { border-bottom-color: var(--signal); }
+  .links a::after { content: " ↗"; font-size: .85em; }
+
   /* ---------- footer ---------- */
 
   footer {
@@ -242,7 +250,7 @@
 
   <section>
     <h2>Now</h2>
-    <p class="now">Writing an audiobook server from scratch. A .NET API that scans a
+    <p class="now">Writing an audiobook server from scratch — a .NET API that scans a
        library, pulls chapter data out of the files, and streams it to a web player
        and an Android app that keep their positions in sync.</p>
   </section>
@@ -265,7 +273,7 @@
       </ul>
     </article>
 
-      <article class="entry">
+      <article class="entry-lead">
       <div class="entry-head">
         <h3 class="entry-title">Matchday</h3>
         <span class="status live">Live</span>
