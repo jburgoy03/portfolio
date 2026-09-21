@@ -153,6 +153,8 @@
   }
   .entry-lead + .entry { border-top: 0; }
 
+  .entry + .entry { border-top: 0; }
+
   .entry-head {
     display: flex;
     flex-wrap: wrap;
@@ -260,6 +262,23 @@
       <p class="stack">.NET 8, PostgreSQL, React, Kotlin, Docker</p>
       <ul class="links">
         <li><a href="https://github.com/jburgoy03/audiobook-server">Source</a></li>
+      </ul>
+    </article>
+
+      <article class="entry">
+      <div class="entry-head">
+        <h3 class="entry-title">Matchday</h3>
+        <span class="status live">Live</span>
+      </div>
+      <p>A Premier League site with fixtures, live scores, lineups and the league
+         table. A background worker syncs data from a public sports feed into
+         Postgres on a schedule that follows the matches: it polls every minute
+         while a game is live, watches for lineups before kickoff, and goes quiet
+         between matchdays. The React front end reads only from its own API, so
+         pages stay fast even when the upstream feed doesn't.</p>
+      <p class="stack">.NET 10, EF Core, PostgreSQL, React, TypeScript, Docker</p>
+      <ul class="links">
+        <li><a href="https://football.deanburgoyne.dev">Visit</a></li>
       </ul>
     </article>
 
