@@ -77,7 +77,7 @@
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
     gap: clamp(32px, 4vw, 96px);
     align-items: center;
-    padding-block: clamp(32px, 6vh, 80px) clamp(64px, 8vh, 112px);
+    padding-block: clamp(24px, 4vh, 72px) clamp(48px, 7vh, 112px);
     min-height: calc(100vh - 100px);
     min-height: calc(100svh - 100px);
   }
@@ -85,10 +85,10 @@
   .name {
     font-family: var(--display);
     font-weight: 600;
-    font-size: clamp(3rem, 6.4vw, 8.5rem);
+    font-size: clamp(3rem, 5.6vw, 7.5rem);
     line-height: .9;
     letter-spacing: -.05em;
-    margin: 0 0 clamp(28px, 3vw, 44px);
+    margin: 0 0 clamp(20px, 2.2vw, 36px);
   }
   .name .dot { color: var(--accent); }
 
@@ -101,11 +101,11 @@
     margin: 0 0 16px;
     max-width: 30ch;
   }
-  .bio { color: #4A4A46; margin: 0 0 clamp(28px, 3vw, 44px); max-width: 38rem; }
+  .bio { color: #4A4A46; margin: 0 0 clamp(24px, 2.4vw, 36px); max-width: 38rem; }
 
   .meta {
     margin: 0;
-    padding-top: 24px;
+    padding-top: 20px;
     border-top: 2px solid var(--ink);
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -113,6 +113,25 @@
   }
   .meta dt { color: var(--muted); font-size: 12px; }
   .meta dd { margin: 4px 0 0; }
+  .meta { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .stack-row { grid-column: 1 / -1; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .stack-row dd {
+    margin-top: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px 24px;
+  }
+  .tools-group { display: block; font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+  .tools ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .tools li {
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1;
+    padding: 7px 10px;
+    border: 1px solid #C9C7BF;
+    background: #F7F6F2;
+  }
 
   /* live panel */
   .live {
@@ -317,6 +336,7 @@
 
   @media (max-width: 640px) {
     .meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stack-row dd { grid-template-columns: minmax(0, 1fr); }
     .app { grid-template-columns: auto minmax(0, 1fr); padding: 16px; gap: 16px; }
     .app-go { display: none; }
     .app-icon { width: 48px; height: 48px; }
@@ -349,9 +369,25 @@
            that run on it.</p>
         <dl class="meta">
           <div><dt class="label">Based in</dt><dd>Cincinnati, Ohio</dd></div>
-          <div><dt class="label">Works in</dt><dd>.NET, TypeScript</dd></div>
           <div><dt class="label">Day job</dt><dd>Warehouse fulfillment</dd></div>
           <div><dt class="label">Off hours</dt><dd>Home server, side projects</dd></div>
+          <div class="stack-row">
+            <dt class="sr-only">Works in</dt>
+            <dd>
+              <div class="tools">
+                <span class="tools-group label">Languages</span>
+                <ul><li>C#</li><li>TypeScript</li><li>Kotlin</li><li>SQL</li></ul>
+              </div>
+              <div class="tools">
+                <span class="tools-group label">Frameworks</span>
+                <ul><li>.NET</li><li>EF Core</li><li>React</li></ul>
+              </div>
+              <div class="tools">
+                <span class="tools-group label">Data &amp; infra</span>
+                <ul><li>PostgreSQL</li><li>Docker</li><li>Azure</li><li>CI/CD</li><li>Linux</li></ul>
+              </div>
+            </dd>
+          </div>
         </dl>
       </div>
 
