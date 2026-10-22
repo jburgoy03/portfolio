@@ -75,10 +75,10 @@
   .name {
     font-family: var(--display);
     font-weight: 600;
-    font-size: clamp(3.5rem, 12.5vw, 15.5rem);
-    line-height: .86;
+    font-size: clamp(3.25rem, 8vw, 9.5rem);
+    line-height: .9;
     letter-spacing: -.05em;
-    margin: clamp(48px, 9vh, 140px) 0 clamp(40px, 5vw, 80px);
+    margin: clamp(40px, 7vh, 96px) 0 clamp(32px, 3.5vw, 56px);
   }
   .name .dot { color: var(--accent); }
 
@@ -167,6 +167,7 @@
   .btn.solid:hover { background: var(--hover); border-color: var(--hover); color: var(--paper); }
   .btn:not(.solid):hover { background: var(--ink); color: var(--paper); }
   .text-link { font-weight: 600; }
+  .actions .url { display: inline-flex; align-items: center; min-height: 48px; color: var(--muted); text-transform: none; letter-spacing: 0; }
 
   .stack {
     font-family: var(--mono);
@@ -317,7 +318,10 @@
              lineups before kickoff, and goes quiet between matchdays. The front end
              reads only from its own API, so pages stay fast when the upstream feed
              doesn't.</p>
-          <p><a class="text-link" href="https://football.deanburgoyne.dev">football.deanburgoyne.dev ↗</a></p>
+          <div class="actions">
+            <a class="btn solid" href="https://football.deanburgoyne.dev">Open Matchday ↗</a>
+            <span class="url label">football.deanburgoyne.dev</span>
+          </div>
         </div>
         <div class="side">
           <span class="badge">LIVE</span>
