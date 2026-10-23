@@ -135,24 +135,20 @@
 
   /* live panel */
   .live {
-    background: var(--ink);
-    color: var(--paper);
-    padding: clamp(24px, 2.2vw, 40px);
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    border-top: 2px solid var(--ink);
+    align-self: center;
   }
   .live-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 12px;
-    padding-bottom: 16px;
-    margin-bottom: 4px;
-    border-bottom: 1px solid #333330;
-    color: #A9A8A2;
+    padding: 16px 0;
+    color: var(--muted);
   }
-  .live-head h2 { margin: 0; font: inherit; color: var(--paper); }
+  .live-head h2 { margin: 0; font: inherit; color: var(--ink); }
   .pulse {
     display: inline-block;
     width: 8px; height: 8px;
@@ -171,35 +167,36 @@
     grid-template-columns: auto minmax(0, 1fr) auto;
     gap: 20px;
     align-items: center;
-    padding: 20px;
-    background: #1C1C1A;
-    border: 1px solid #2E2E2B;
+    padding: 22px 0;
+    border-top: 1px solid var(--ink);
     text-decoration: none;
-    color: var(--paper);
-    transition: background .15s ease, border-color .15s ease, transform .15s ease;
+    color: var(--ink);
   }
-  .app:hover { background: #242421; border-color: var(--accent); color: var(--paper); }
-  .app:hover .app-go { color: var(--ink); background: var(--accent); }
+  .app:last-of-type { border-bottom: 1px solid var(--ink); }
+  .app:hover { color: var(--ink); }
+  .app:hover .app-name { color: var(--hover); }
+  .app:hover .app-go { background: var(--ink); color: var(--paper); }
   .app-icon {
-    width: 56px; height: 56px;
+    width: 52px; height: 52px;
     display: grid; place-items: center;
     background: var(--accent);
+    border-radius: 10px;
   }
   .app-icon svg { fill: var(--ink); stroke: var(--ink); }
   .app-icon svg[fill="none"] { fill: none; }
   .app-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-  .app-name { font-family: var(--display); font-size: clamp(1.35rem, 1.6vw, 1.75rem); font-weight: 600; letter-spacing: -.02em; line-height: 1.1; }
-  .app-desc { font-size: 15px; line-height: 1.45; color: #C9C8C1; }
-  .app-url { font-size: 12px; color: #8F8E88; text-transform: none; letter-spacing: 0; margin-top: 4px; }
+  .app-name { font-family: var(--display); font-size: clamp(1.35rem, 1.6vw, 1.75rem); font-weight: 600; letter-spacing: -.02em; line-height: 1.1; transition: color .15s ease; }
+  .app-desc { font-size: 15px; line-height: 1.45; color: #4A4A46; }
+  .app-url { font-size: 12px; color: var(--muted); text-transform: none; letter-spacing: 0; margin-top: 2px; }
   .app-go {
     width: 44px; height: 44px;
     display: grid; place-items: center;
-    border: 1px solid #3A3A36;
+    border: 1.5px solid var(--ink);
     font-size: 18px;
     transition: background .15s ease, color .15s ease;
   }
-  .live-foot { margin-top: 8px; color: #A9A8A2; text-decoration: none; align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; }
-  .live-foot:hover { color: var(--accent); }
+  .live-foot { margin-top: 8px; color: var(--muted); text-decoration: none; align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; }
+  .live-foot:hover { color: var(--hover); }
 
   /* ---------- work ---------- */
 
@@ -284,12 +281,16 @@
   /* ---------- now ---------- */
 
   .now {
-    margin-top: clamp(80px, 10vw, 160px);
-    background: var(--ink);
-    color: var(--paper);
-    padding-block: clamp(48px, 6vw, 112px);
+    margin-top: clamp(56px, 6vw, 96px);
   }
-  .now .label { grid-column: 1 / span 2; color: var(--accent); padding-top: .9em; }
+  .now .wrap {
+    padding-top: 32px;
+    background-image: linear-gradient(var(--ink), var(--ink));
+    background-size: calc(100% - 2 * var(--gutter)) 2px;
+    background-position: top center;
+    background-repeat: no-repeat;
+  }
+  .now .label { grid-column: 1 / span 2; color: var(--hover); padding-top: .9em; }
   .now p {
     grid-column: 3 / span 9;
     margin: 0;
@@ -337,7 +338,7 @@
   @media (max-width: 640px) {
     .meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .stack-row dd { grid-template-columns: minmax(0, 1fr); }
-    .app { grid-template-columns: auto minmax(0, 1fr); padding: 16px; gap: 16px; }
+    .app { grid-template-columns: auto minmax(0, 1fr); padding: 18px 0; gap: 16px; }
     .app-go { display: none; }
     .app-icon { width: 48px; height: 48px; }
     .row { grid-template-columns: minmax(0, 1fr); }
